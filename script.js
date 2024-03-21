@@ -45,9 +45,9 @@ button.addEventListener('click', function(){
                 console.log('Hai cliccato la cella n.', i)      
                 if(mines.includes(i)){
                     console.log('BOMBA')
-                    let elBomb = document.getElementsByClassName('squareon');
-                    elBomb.classList.remove('squareon');
-                    console.log(elBomb);
+                    let elBomb = document.querySelector('div.squareon');
+                    elBomb.classList.add('bombsquare');
+                    console.log(elBomb, 'pppppp');
 
                 } else{
                     userscore++                    
