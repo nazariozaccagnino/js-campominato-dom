@@ -7,17 +7,16 @@ function createLittleSq (){
     square.className = 'littlesquare'
     return square        
 }
+
 function createBombs(maxnum){
     let bombs = [];
     while(bombs.length < 16){
         let singleBomb = getRndInteger(1, maxnum);
         if (!bombs.includes(singleBomb)){
             bombs.push(singleBomb)
-        }
-        
+        }        
     } 
     return bombs
-
 }
 
 let button = document.getElementById('startbutton')
@@ -30,6 +29,8 @@ button.addEventListener('click', function(){
     mainsquare.innerHTML = '';
     
     if(choice === 1){
+        let mines = createBombs(100);
+        console.log(mines)
         for (let i = 1; i<= 100; i++){
             let littlesq = createLittleSq();                       
             mainsquare.appendChild(littlesq);
@@ -39,12 +40,14 @@ button.addEventListener('click', function(){
                 const textnode = document.createTextNode(i);
                 node.appendChild(textnode)
                 littlesq.appendChild(node)
-                console.log('Hai cliccato la cella n.', i)
-                
+                console.log('Hai cliccato la cella n.', i)               
+                if(mines.includes(i)){
+                    console.log('BOMBA')
+                }
             }, {once : true})
         }
-        let mines = createBombs(100);
-        console.log(mines)
+        
+        
 
 
 
