@@ -19,12 +19,14 @@ function createBombs(maxnum){
     return bombs
 }
 
+
+
 let button = document.getElementById('startbutton')
 
 button.addEventListener('click', function(){
         
     let choice = parseInt(document.getElementById("choice").value)
-    
+    let userscore = 0;
     let mainsquare = document.getElementById('mainsquare')
     mainsquare.innerHTML = '';
     
@@ -40,11 +42,17 @@ button.addEventListener('click', function(){
                 const textnode = document.createTextNode(i);
                 node.appendChild(textnode)
                 littlesq.appendChild(node)
-                console.log('Hai cliccato la cella n.', i)               
+                console.log('Hai cliccato la cella n.', i)      
                 if(mines.includes(i)){
                     console.log('BOMBA')
+                    let elBomb = document.getElementsByClassName('squareon');
+                    elBomb.classList.remove('squareon');
+                    console.log(elBomb);
+
+                } else{
+                    userscore++                    
                 }
-            }, {once : true})
+            })
         }
         
         
