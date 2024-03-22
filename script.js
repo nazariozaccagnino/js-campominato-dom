@@ -29,8 +29,15 @@ button.addEventListener('click', function(){
     let userscore = 0;
     let mainsquare = document.getElementById('mainsquare')
     mainsquare.innerHTML = '';
+    let messageEl = document.getElementById('result');
+    let message = '';
+    let scoreEl = document.getElementById('score');
+    let score = '';
+    
+    
     
     if(choice === 1){
+        let maxscore = 84;
         let mines = createBombs(100);
         console.log(mines)
         for (let i = 1; i<= 100; i++){
@@ -42,17 +49,23 @@ button.addEventListener('click', function(){
                 const textnode = document.createTextNode(i);
                 node.appendChild(textnode)
                 littlesq.appendChild(node)
-                console.log('Hai cliccato la cella n.', i)      
+                console.log('Hai cliccato la cella n.', i)
+                userscore++      
                 if(mines.includes(i)){
                     console.log('BOMBA')
-                    let elBomb = document.querySelector('div.squareon');
-                    elBomb.classList.add('bombsquare');
-                    console.log(elBomb, 'pppppp');
+                    littlesq.classList.add('bombsquare')
+                    message += 'Hai perso'
+                    score = `il tuo punteggio è ${userscore}`
 
-                } else{
-                    userscore++                    
-                }
-            })
+                } if (userscore === maxscore)
+                    message += 'Hai VINTO'
+                    score = `il tuo punteggio è ${userscore}`
+                        console.log('VINTO')
+                
+
+                messageEl.innerHTML = message
+                scoreEl .innerHTML = score
+            }, {once : true})
         }
         
         
