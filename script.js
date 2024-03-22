@@ -54,26 +54,23 @@ button.addEventListener('click', function(){
                 if(mines.includes(i)){
                     console.log('BOMBA')
                     littlesq.classList.add('bombsquare')
-                    message += 'Hai perso'
+                    message = 'Hai perso'
                     score = `il tuo punteggio è ${userscore}`
 
                 } if (userscore === maxscore)
-                    message += 'Hai VINTO'
-                    score = `il tuo punteggio è ${userscore}`
-                        console.log('VINTO')
-                
+                    message = 'Hai VINTO'
+                    score = `il tuo punteggio è ${userscore}`         
 
                 messageEl.innerHTML = message
                 scoreEl .innerHTML = score
             }, {once : true})
         }
         
-        
-
-
-
 
     } if (choice === 2){
+        let maxscore = 65;
+        let mines = createBombs(81);
+        console.log(mines)
         for (let i = 1; i<= 81; i++){
             let littlesq = createLittleSq();
             mainsquare.appendChild(littlesq);
@@ -85,11 +82,30 @@ button.addEventListener('click', function(){
                 node.appendChild(textnode)
                 littlesq.appendChild(node)
                 console.log('Hai cliccato la cella n.', i)
+                userscore++      
+                if(mines.includes(i)){
+                    console.log('BOMBA')
+                    littlesq.classList.add('bombsquare')
+                    message = 'Hai perso'
+                    score = `il tuo punteggio è ${userscore}`
+
+                } if (userscore === maxscore)
+                    message += 'Hai VINTO'
+                    score = `il tuo punteggio è ${userscore}`
+                
+
+                messageEl.innerHTML = message
+                scoreEl .innerHTML = score
                 
             }, {once : true})
         }
-    } if (choice === 3) {
+
+    } if (choice === 3){
+        let maxscore = 33;
+        let mines = createBombs(49);
+        console.log(mines)
         for (let i = 1; i<= 49; i++){
+            let maxscore = 33;
             let littlesq = createLittleSq();
             mainsquare.appendChild(littlesq);
             littlesq.classList.add('sevensquare')
@@ -100,6 +116,20 @@ button.addEventListener('click', function(){
                 node.appendChild(textnode)
                 littlesq.appendChild(node)
                 console.log('Hai cliccato la cella n.', i)
+                userscore++      
+                if(mines.includes(i)){
+                    console.log('BOMBA')
+                    littlesq.classList.add('bombsquare')
+                    message = 'Hai perso'
+                    score = `il tuo punteggio è ${userscore}`
+
+                } if (userscore === maxscore)
+                    message = 'Hai VINTO'
+                    score = `il tuo punteggio è ${userscore}`
+                
+
+                messageEl.innerHTML = message
+                scoreEl .innerHTML = score
                 
             }, {once : true})
         }
